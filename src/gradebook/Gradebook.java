@@ -23,6 +23,8 @@ private void controller(){
             break;
         case"addGrade":
             addGrade();
+             
+             
             break;
         case "records":
             checkRecord();
@@ -41,11 +43,28 @@ public void addGrade(){
     String input = scanner.next();
         for(Students n:StudentsNames){
             if (n.getName().equals(input)){
-              System.out.println("don't see me");  //add grade to student and ask what next
+                for(;;){
+              System.out.println("enter the test score you wish to add to "+ input );  //add grade to student and ask what next
+               Scanner inscore = new Scanner(System.in);
+               int grade = inscore.nextInt();
+               n.recordGrade(grade);
+               System.out.println("enter another score or press any key to retun to main menu for the main menu");
+               Scanner sc = new Scanner(System.in);
+                    String input2 = sc.next();
+                    int putin= inscore.nextInt();
+                    while (!inscore.hasNextInt()){System.out.println("does not have it");}  
+                       /* sc.next();
+                        controller();
+                        break;
+                    }*/continue;
+                    
+                    
                
             }
         }
-    System.out.println("No students with the name "+input+" was found /n  press t to try again or press any key  to go to the main menu");
+           }
+    System.out.println("No students with the name "+input+" was found /n"
+            + " press t to try again or press any key  to go to the main menu");
     Scanner scanner2 = new Scanner(System.in);
     String input2 = scanner2.next();
     switch (input2){
@@ -80,7 +99,7 @@ public void checkRecord(){
    
     public static void main(String[] args) {
         Gradebook start = new Gradebook();
-        start.controller();
+        for(;;)start.controller();
         
         
      /* Students s = new Students("Bob");
@@ -109,10 +128,34 @@ public void checkRecord(){
         System.out.println("enter the student name");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.next();
+        for(Students sname: StudentsNames){
+            if (sname.getName().equals(name)){
+                System.out.println(name+" is already a registered! press n to enter a new name or press any key to return to main menu");
+                Scanner scanner2 = new Scanner(System.in);
+                    String input2 = scanner2.next();
+                    switch (input2){
+                        case "n":
+                            addName();
+                            break;
+                        default: 
+                            controller();
+
+                     }
+             }
+        }
         Students new_student = new Students(name);//starts the student class and passes in the string name as a parameter
         StudentsNames.add(new_student);//adds the new_student class object into the Studentnames array
-       
-           
+        System.out.println(name +" had been added to the records hit n to add another name or press any key to return to the main menu ");
+           Scanner scanner2 = new Scanner(System.in);
+                    String input2 = scanner2.next();
+                    switch (input2){
+                        case "n":
+                            addName();
+                            break;
+                        default: 
+                            controller();
+
+                     }
         
         /*for(Students sname: StudentsNames){
                Random r = new Random();
@@ -126,5 +169,5 @@ public void checkRecord(){
       // System.out.println(StudentsNames.get(0)+"  is in array"); //tests if item is in array
        addName();//runs the function again to add a new name
         
-    }*/
+    }*/}
 }
