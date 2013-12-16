@@ -38,7 +38,7 @@ public class Students {
         
         }return "lala";
     }
-    public void addGrade(int grade){
+    public void recordGrade(int grade){
         grades.add(grade);
         
     }
