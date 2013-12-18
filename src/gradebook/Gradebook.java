@@ -48,15 +48,15 @@ public void addGrade(){
                Scanner inscore = new Scanner(System.in);
                int grade = inscore.nextInt();
                n.recordGrade(grade);
-               System.out.println("enter another score or press any key to retun to main menu for the main menu");
+               System.out.println("enter another score y/n");
                Scanner sc = new Scanner(System.in);
                     String input2 = sc.next();
-                    int putin= inscore.nextInt();
-                    while (!inscore.hasNextInt()){System.out.println("does not have it");}  
-                       /* sc.next();
+                   
+                    if ("y".equals(input2)){continue;}  
+                    else{
                         controller();
-                        break;
-                    }*/continue;
+                        return;
+                    }
                     
                     
                
@@ -86,12 +86,12 @@ public void checkRecord(){
         System.out.println("Please enter a name");
     Scanner scanner = new Scanner(System.in);
     String input= scanner.next();
-     System.out.println("Ththis is no goodrd");
+     
     
       for(Students s:StudentsNames){
          if( s.getName().equals(input)){
              System.out.println(input +" found");
-             System.out.println(input +" test scores are"+s.showGrades());
+             s.showGrades();
           }
       }
 }
