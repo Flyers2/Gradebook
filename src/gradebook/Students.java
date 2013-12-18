@@ -22,21 +22,22 @@ public class Students {
         return name;
     }
     
-    public String showGrades(){   
+    public String showGrades(){ 
+         int t =1;
         for(int test:grades){
              if (grades.isEmpty()){
                return name+" has no tests recorded";
                 
-                
+             
              }
-          int t =1;
+         
           
           System.out.println("test "+t+":"+test);
           t++;
           
           
         
-        }return "lala";
+        }return "";
     }
     public void recordGrade(int grade){
         grades.add(grade);
